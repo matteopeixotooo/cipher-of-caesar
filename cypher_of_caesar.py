@@ -5,7 +5,8 @@ def caesar(original_text, shift_amount, direction_message):
     if direction_message == 'encode':
         for char in original_text:
             if char in alphabet:
-                move_original_text = (alphabet.index(char) + shift_amount) % 26
+                move_original_text = alphabet.index(char) + shift_amount
+                move_original_text %= len(alphabet)
                 code_text += alphabet[move_original_text]
             elif char == ' ':
                 code_text += " "
@@ -15,7 +16,8 @@ def caesar(original_text, shift_amount, direction_message):
     elif direction_message == 'decode':
         for char in original_text:
             if char in alphabet:
-                move_original_text = (alphabet.index(char) - shift_amount) % 26
+                move_original_text = alphabet.index(char) - shift_amount
+                move_original_text %= len(alphabet)
                 code_text += alphabet[move_original_text]
             elif char == ' ':
                 code_text += " "
